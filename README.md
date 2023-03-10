@@ -1,2 +1,2 @@
 # PHILO PROJECT
-this is philo 42 project
+this is philo 42 project j
