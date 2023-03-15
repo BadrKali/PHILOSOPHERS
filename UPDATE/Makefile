@@ -1,4 +1,4 @@
-CC = CC
+CC = gcc
 SRC = main.c args_parsing.c generic_tools.c threads.c
 BONUS = 
 OBJ = $(SRC:.c=.o)

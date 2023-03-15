@@ -8,6 +8,8 @@
 #define ARGS_ERROR 1
 #define THREADS_ERROR 2
 
+
+
 typedef struct s_data
 {
     int number_of_philosophers;
@@ -15,8 +17,10 @@ typedef struct s_data
     int time_to_eat;
     int time_to_sleep;
     int philo_index;
+    char philo_state;
     pthread_t *th;
     pthread_mutex_t *mutex;
+    int last_time_eat;
 
 } t_data;
 

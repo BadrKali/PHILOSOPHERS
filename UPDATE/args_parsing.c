@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 10:37:56 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/13 11:09:24 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/14 09:29:52 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int args_parsing(t_data **input,char **av)
         ((*input)+i)->time_to_die = ft_atoi(av[2]);
         ((*input)+i)->time_to_eat = ft_atoi(av[3]);
         ((*input)+i)->time_to_sleep = ft_atoi(av[4]);
+        ((*input)+i)->eat_counter = 0;
         i++;
     }
     return(0);
