@@ -1,32 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generic_tools.c                                    :+:      :+:    :+:   */
+/*   gen_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 11:13:38 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/11 11:46:13 by bel-kala         ###   ########.fr       */
+/*   Created: 2023/03/20 09:43:52 by bel-kala          #+#    #+#             */
+/*   Updated: 2023/03/20 10:28:45 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"philo.h"
 
-int	ft_isdigit(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
-}
-
-void msg_error(int n)
-{
-    if(n == 1)
-        write(2,"ARGS_ERROR\n",11);
-	if(n == 2)
-		write(2,"THREADS_ERROR\n",14);
-    exit(1);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -54,4 +39,26 @@ int	ft_atoi(const char *str)
 	}
 	res = res * sign;
 	return (res);
+}
+
+void msg_error(int num)
+{
+    if(num == 1)
+        write(2,"ARGS_ERROR\n",11);
+	else if(num == 2)
+		write(2,"THREADS_ERROR\n",14);
+    exit(1);
+}
+
+int get_time_stamp(t_thread *threads)
+{
+    long sec;
+    long ms;
+    int mlsec;
+
+    gettimeofday(&(threads->input)->end,NULL);
+    sec = threads->input->end.tv_sec - threads->input->start.tv_sec;
+    ms = ((sec * 1000000) + threads->input->end.tv_usec) - threads->input->start.tv_usec;
+    mlsec = ms * 0.001;
+    return(mlsec);
 }

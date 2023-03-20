@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 11:25:15 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/18 14:24:28 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:44:14 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ int get_time_stamp(t_thread *threads)
     gettimeofday(&(threads->input)->end,NULL);
     sec = threads->input->end.tv_sec - threads->input->start.tv_sec;
     ms = ((sec * 1000000) + threads->input->end.tv_usec) - threads->input->start.tv_usec;
+    mlsec = ms * 0.001;
+    return(mlsec);
+}
+int get_time_stamp_data(t_data *threads)
+{
+    long sec;
+    long ms;
+    int mlsec;
+
+    gettimeofday(&(threads)->end,NULL);
+    sec = threads->end.tv_sec - threads->start.tv_sec;
+    ms = ((sec * 1000000) + threads->end.tv_usec) - threads->start.tv_usec;
     mlsec = ms * 0.001;
     return(mlsec);
 }
@@ -88,6 +100,7 @@ void philo_start(t_data *input, t_thread **threads)
     while(i < input->number_of_philosophers)
     {
         input->forks_state[i] = 0;
+        input->philos_last_eat[i] = 0;
         (*threads + i)->index = i;
         (*threads + i)->feed_times = 0;
         (*threads + i)->last_feed = 0;
@@ -110,6 +123,8 @@ int args_parsing(t_data **input,t_thread **threads, char **av)
         i++;
     }
     *input = malloc(sizeof(t_data));
+    (*input)->philos_last_eat = malloc(sizeof(int) * ft_atoi(av[1]));
+    (*input)->state = malloc(sizeof(char) * ft_atoi(av[1]));
     (*input)->forks_state = malloc(sizeof(int) * ft_atoi(av[1]));
     (*input)->mutex = malloc(sizeof(pthread_mutex_t) * ft_atoi(av[1]));
     (*input)->th = malloc(sizeof(pthread_t) * ft_atoi(av[1]));

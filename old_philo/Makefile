@@ -6,12 +6,12 @@
 #    By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:02:45 by bel-kala          #+#    #+#              #
-#    Updated: 2023/03/11 13:25:57 by bel-kala         ###   ########.fr        #
+#    Updated: 2023/03/19 14:13:41 by bel-kala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = CC
-SRC = main.c args_parsing.c generic_tools.c threads.c
+CC = CC 
+SRC = main.c args_pars.c threads.c
 BONUS = 
 OBJ = $(SRC:.c=.o)
 NAME = philo

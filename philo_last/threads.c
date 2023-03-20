@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 11:45:24 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/18 13:18:04 by bel-kala         ###   ########.fr       */
+/*   Created: 2023/03/20 10:01:31 by bel-kala          #+#    #+#             */
+/*   Updated: 2023/03/20 10:09:03 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"philo.h"
-
-
 void create_mutex_init_destroy(t_thread *threads, int n)
 {
     int i;
@@ -50,6 +48,7 @@ void create_threads_pool(t_thread *threads,int n)
                 msg_error(THREADS_ERROR);
             i++;
         }
+        //the_monitore(threads->input);
     }
     else if(n == 1)
     {
@@ -60,6 +59,7 @@ void create_threads_pool(t_thread *threads,int n)
             i++;
         }
     }
+    
 }
 
 void create_threads(t_thread *threads)
@@ -67,7 +67,6 @@ void create_threads(t_thread *threads)
     create_mutex_init_destroy(threads,0);
     create_threads_pool(threads,0);
     create_threads_pool(threads,1);
-    create_mutex_init_destroy(threads,1);   
+    create_mutex_init_destroy(threads,1);
 }
-
 

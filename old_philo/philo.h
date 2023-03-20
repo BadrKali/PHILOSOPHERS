@@ -21,6 +21,9 @@ typedef struct s_data
     int *forks_state;
     struct timeval start;
     struct timeval end;
+    int *philos_last_eat;
+    pthread_mutex_t meal;
+    char *state;
 
 } t_data;
 
@@ -40,5 +43,7 @@ void msg_error(int num);
 void create_threads(t_thread *threads);
 void *wait_room(void *args);
 int get_time_stamp(t_thread *threads);
+int get_time_stamp_data(t_data *threads);
+void the_monitore(t_data *input);
 
 #endif
