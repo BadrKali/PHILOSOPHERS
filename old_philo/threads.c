@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 11:45:24 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/19 13:08:55 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:45:00 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void create_threads_pool(t_thread *threads,int n)
                 msg_error(THREADS_ERROR);
             i++;
         }
-        the_monitore(threads->input);
+        //the_monitore(threads->input);
     }
     else if(n == 1)
     {

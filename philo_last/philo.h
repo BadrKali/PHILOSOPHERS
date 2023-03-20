@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:40:56 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/20 10:29:58 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:43:06 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ int	ft_atoi(const char *str);
 void create_threads(t_thread *threads);
 void *wait_room(void *args);
 void msg_error(int num);
+int get_time_stamp(t_thread *threads);
 #endif

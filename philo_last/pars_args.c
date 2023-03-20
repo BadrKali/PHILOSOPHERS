@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:46:35 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/20 10:07:47 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:43:21 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void philo_start(t_data *input,t_thread **threads)
     while(i < input->number_of_philosophers)
     {
         (*threads + i)->index = i + 1;
-        (*threads + i)->feeed_times = 0;
+        (*threads + i)->feed_times = 0;
         (*threads + i)->input = input;
         i++;
     }
