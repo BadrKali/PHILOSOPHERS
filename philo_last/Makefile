@@ -6,11 +6,11 @@
 #    By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:02:45 by bel-kala          #+#    #+#              #
-#    Updated: 2023/03/20 10:06:21 by bel-kala         ###   ########.fr        #
+#    Updated: 2023/03/23 10:29:18 by bel-kala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = CC 
+CC = gcc -pthread
 SRC = main.c pars_args.c gen_tools.c threads.c
 BONUS = 
 OBJ = $(SRC:.c=.o)

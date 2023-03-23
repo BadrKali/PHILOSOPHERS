@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:40:56 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/20 10:43:06 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:16:55 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_data
     pthread_t *th;
     struct timeval start;
     struct timeval end;
+    pthread_mutex_t state;
     
 }t_data;
 

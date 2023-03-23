@@ -6,66 +6,62 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:40:21 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/03/20 10:51:44 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:25:18 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"philo.h"
 
-void philo_is_sleeping(t_thread *philo)
+void philo_is(t_thread *philo,char *str)
 {
-    printf("%d %d is sleeping\n",get_time_stamp(philo),philo->index);
-    usleep(philo->input->time_to_sleep * 1000);
-}
-
-void philo_is_thinking(t_thread *philo)
-{
-    printf("%d %d is thinking\n",get_time_stamp(philo),philo->index);
+    pthread_mutex_lock(&(philo->input->state));
+    printf("%d %d philo is %s\n",get_time_stamp(philo),philo->index,str);
+    pthread_mutex_unlock(&(philo->input->state));
 }
 
 void philo_is_eating(t_thread *philo)
 {
-    printf("%d %d is eating\n",get_time_stamp(philo),philo->index);
-    philo->feed_times++;
+    philo_is(philo,"eating");
     usleep(philo->input->time_to_eat * 1000);
-    pthread_mutex_unlock(&(philo->input)->mutex[philo->index]);
+    pthread_mutex_unlock(&(philo->input->mutex[philo->index]));
     pthread_mutex_unlock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
+
 }
-void pick_up_forks(t_thread *philo)
+
+void philo_is_sleeping(t_thread *philo)
 {
-    pthread_mutex_lock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
-    printf("%d %d has taken a fork\n",get_time_stamp(philo),philo->index);
-    pthread_mutex_lock(&(philo->input)->mutex[philo->index]);
-    printf("%d %d has taken a fork\n",get_time_stamp(philo),philo->index);
+    philo_is(philo,"sleeping");
+    usleep(philo->input->time_to_sleep * 1000);
 }
 
-
-
-void dinning_room(t_thread *philo)
+void the_dinning_room(t_thread *philo)
 {
     while(1)
     {
-        pick_up_forks(philo);
+        pthread_mutex_lock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
+        philo_is(philo,"has taken a fork");
+        pthread_mutex_lock(&(philo->input->mutex[philo->index]));
+        philo_is(philo,"has taken a fork");
         philo_is_eating(philo);
         philo_is_sleeping(philo);
-        philo_is_thinking(philo);
+        philo_is(philo,"thinkg");
     }
 }
-
 
 void *wait_room(void *args)
 {
     t_thread *philo = (t_thread *)args;
-
+    
     if(philo->index % 2 == 0)
-        dinning_room(philo);
-    if(philo->index % 2 != 0)
+        the_dinning_room(philo);
+    else if(philo->index % 2 != 0)
     {
         usleep(1000);
-        dinning_room(philo);
+        the_dinning_room(philo);
     }
     return(args);
 }
+
 
 int main(int ac,char **av)
 {
