@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = CC 
+CC = gcc -pthread
 SRC = main.c args_pars.c threads.c
 BONUS = 
 OBJ = $(SRC:.c=.o)

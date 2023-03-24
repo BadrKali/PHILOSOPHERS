@@ -15,22 +15,24 @@
 void philo_is(t_thread *philo,char *str)
 {
     pthread_mutex_lock(&(philo->input->state));
-    printf("%d %d philo is %s\n",get_time_stamp(philo),philo->index,str);
+    printf("%d %d %s\n",get_time_stamp(philo),philo->index,str);
     pthread_mutex_unlock(&(philo->input->state));
 }
 
 void philo_is_eating(t_thread *philo)
 {
-    philo_is(philo,"eating");
+    pthread_mutex_lock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
+    philo_is(philo,"has taken a fork");
+    pthread_mutex_lock(&(philo->input->mutex[philo->index]));
+    philo_is(philo,"has taken a fork");
+    philo_is(philo,"is eating");
     usleep(philo->input->time_to_eat * 1000);
-    pthread_mutex_unlock(&(philo->input->mutex[philo->index]));
-    pthread_mutex_unlock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
 
 }
 
 void philo_is_sleeping(t_thread *philo)
 {
-    philo_is(philo,"sleeping");
+    philo_is(philo,"is sleeping");
     usleep(philo->input->time_to_sleep * 1000);
 }
 
@@ -38,13 +40,11 @@ void the_dinning_room(t_thread *philo)
 {
     while(1)
     {
-        pthread_mutex_lock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
-        philo_is(philo,"has taken a fork");
-        pthread_mutex_lock(&(philo->input->mutex[philo->index]));
-        philo_is(philo,"has taken a fork");
         philo_is_eating(philo);
+        pthread_mutex_unlock(&(philo->input->mutex[philo->index]));
+        pthread_mutex_unlock(&(philo->input)->mutex[(philo->index + 1) % philo->input->number_of_philosophers]);
         philo_is_sleeping(philo);
-        philo_is(philo,"thinkg");
+        philo_is(philo,"is thinking");
     }
 }
 
@@ -56,7 +56,7 @@ void *wait_room(void *args)
         the_dinning_room(philo);
     else if(philo->index % 2 != 0)
     {
-        usleep(1000);
+        usleep(100);
         the_dinning_room(philo);
     }
     return(args);
