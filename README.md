@@ -11,18 +11,3 @@
   <li><strong>Deadlock Avoidance:</strong> The simulation employs a deadlock avoidance strategy to prevent philosophers from entering into a deadlock state, where they are unable to acquire the necessary forks to eat.</li>
   <li><strong>Fair Resource Allocation:</strong> The implementation strives to allocate forks fairly among philosophers, preventing starvation and ensuring that each philosopher gets a chance to eat.</li>
 </ol>
-
-<h2>How to Run:</h2>
-<ol>
-  <li>Clone the repository to your local machine using the provided GitHub link.</li>
-  <li>Compile and build the project using your preferred programming language and development environment.</li>
-  <li>Run the executable file to launch the simulation.</li>
-  <li>Follow the on-screen instructions to interact with the simulation, observe the philosophers' behavior, and understand how the mutexes (forks) are shared.</li>
-</ol>
-
-<h2>Contributions:</h2>
-<p>Contributions to this project are welcome! If you find any issues, have suggestions for improvements, or would like to add new features, please feel free to submit a pull request.</p>
-
-<p><em>Note: This simulation aims to demonstrate the Dining Philosophers Problem and its solution using threads and mutexes. It is not intended as a benchmark for performance evaluation or an optimization study.</em></p>
-
-<p>Enjoy exploring the fascinating world of concurrent programming and resource synchronization with the Dining Philosophers Problem simulation!</p>
