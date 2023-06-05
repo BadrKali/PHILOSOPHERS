@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:48:07 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/05/31 12:27:48 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/03 18:09:52 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_numeric(char *arg)
 			return (1);
 		i++;
 	}
-	if (ft_atoi(arg) > 2147483647 || ft_atoi(arg) < -2147483648)
+	if (ft_atoi(arg) > 2147483647)
 		return (1);
 	if (ft_atoi(arg) <= 0)
 		return (1);

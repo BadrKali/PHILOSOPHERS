@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:38:38 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/05/31 12:34:52 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/05 10:42:27 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ int	mutex_init(t_data *input, t_thread *thread)
 		return (1);
 	while (i < input->philo_num)
 	{
-		pthread_mutex_init(&(thread + i)->mutex_check, NULL);
-		pthread_mutex_init(&(thread + i)->mutex_count, NULL);
+		if (pthread_mutex_init(&(thread + i)->mutex_check, NULL) != 0)
+			return (1);
+		if (pthread_mutex_init(&(thread + i)->mutex_count, NULL) != 0)
+			return (1);
 		if (pthread_mutex_init(&input->mutex[i], NULL) != 0)
 			return (1);
 		i++;
@@ -74,7 +76,7 @@ int	mutex_init(t_data *input, t_thread *thread)
 	return (0);
 }
 
-void	create_philos(t_thread *thread, t_data *input)
+int	create_philos(t_thread *thread, t_data *input)
 {
 	int	i;
 
@@ -82,17 +84,23 @@ void	create_philos(t_thread *thread, t_data *input)
 	gettimeofday(&input->start, NULL);
 	while (i < input->philo_num)
 	{
-		pthread_create(&thread->input->th[i], NULL, &dinning_room, &thread[i]);
-		pthread_detach(input->th[i]);
+		if (pthread_create(&thread->input->th[i], NULL,
+				&the_room, &thread[i]) != 0)
+			return (1);
+		if (pthread_detach(input->th[i]) != 0)
+			return (1);
 		usleep(100);
 		i++;
 	}
 	if (the_monitore(thread) == NULL)
-		return ;
+		return (1);
+	return (0);
 }
 
 void	start_simulation(t_data *input, t_thread *threads)
 {
-	mutex_init(input, threads);
-	create_philos(threads, input);
+	if (mutex_init(input, threads) == 1)
+		return ;
+	if (create_philos(threads, input) == 1)
+		return ;
 }

@@ -6,17 +6,16 @@
 #    By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:36:23 by bel-kala          #+#    #+#              #
-#    Updated: 2023/05/31 12:24:52 by bel-kala         ###   ########.fr        #
+#    Updated: 2023/06/05 11:49:23 by bel-kala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-SRC = main.c threads.c utils.c collect_data.c free_resource.c
-BONUS = 
+SRC = main.c threads.c utils.c collect_data.c free_resource.c monitoring.c
 OBJ = $(SRC:.c=.o)
 NAME = philo
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 PHILO = philo.h
 
 all:$(NAME)

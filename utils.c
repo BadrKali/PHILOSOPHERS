@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:38:51 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/05/24 18:51:51 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:48:15 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void	msg_error(int num)
+int	msg_error(int num)
 {
 	if (num == 15)
 		ft_putstr_fd("ARGS ERROR\n", 2);
+	return (1);
 }
 
 size_t	ft_strlen(const char *str)

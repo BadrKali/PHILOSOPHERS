@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:52:11 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/05/31 12:35:56 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:45:31 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_thread
 	int				done;
 }	t_thread;
 
-void		msg_error(int num);
+int			msg_error(int num);
 int			ft_isdigit(int c);
 int			data_entry(t_data **input, char **av);
 size_t		ft_strlen(const char *str);
@@ -56,7 +56,7 @@ void		start_simulation(t_data *input, t_thread *threads);
 int			get_time_stamp(t_thread *threads);
 void		my_usleep(size_t value, t_thread *philo);
 char		*the_monitore(t_thread *philo);
-void		*dinning_room(void *args);
+void		*the_room(void *args);
 int			ft_check(t_thread *philo, int flag);
 void		free_resources(t_data *input, t_thread *threads);
 char		*the_master_monitore(t_thread *philo);
