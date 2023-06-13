@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:52:11 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/06/04 12:45:31 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/12 09:55:20 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void		*the_room(void *args);
 int			ft_check(t_thread *philo, int flag);
 void		free_resources(t_data *input, t_thread *threads);
 char		*the_master_monitore(t_thread *philo);
+void		destroy_mutex(t_thread *threads);
 
 #endif

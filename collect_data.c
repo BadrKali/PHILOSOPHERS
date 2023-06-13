@@ -6,7 +6,7 @@
 /*   By: bel-kala <bel-kala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 10:48:07 by bel-kala          #+#    #+#             */
-/*   Updated: 2023/06/03 18:09:52 by bel-kala         ###   ########.fr       */
+/*   Updated: 2023/06/12 09:31:03 by bel-kala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	check_numeric(char *arg)
 	int	i;
 
 	i = 0;
+	if (arg[i] == '+')
+		i++;
 	while (arg[i] != '\0')
 	{
 		if (ft_isdigit(arg[i]) != 1)
